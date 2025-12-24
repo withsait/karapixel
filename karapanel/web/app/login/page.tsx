@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,7 +21,10 @@ export default function LoginPage() {
 
     try {
       await api.login(username, password);
-      router.push("/");
+      // Redirect to original page or dashboard
+      const redirect = searchParams.get('redirect') || '/';
+      router.push(redirect);
+      router.refresh(); // Force refresh to update middleware state
     } catch (err) {
       setError("Invalid username or password");
     } finally {

@@ -7,6 +7,8 @@ class ApiClient {
     this.token = token;
     if (typeof window !== 'undefined') {
       localStorage.setItem('karapanel_token', token);
+      // Also set as cookie for middleware auth check
+      document.cookie = `karapanel_token=${token}; path=/; max-age=${60 * 60 * 24}; SameSite=Strict`;
     }
   }
 
@@ -22,6 +24,8 @@ class ApiClient {
     this.token = null;
     if (typeof window !== 'undefined') {
       localStorage.removeItem('karapanel_token');
+      // Also clear cookie
+      document.cookie = 'karapanel_token=; path=/; max-age=0';
     }
   }
 
