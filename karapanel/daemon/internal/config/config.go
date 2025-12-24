@@ -10,6 +10,7 @@ import (
 type Config struct {
 	Server   ServerConfig   `yaml:"server"`
 	Auth     AuthConfig     `yaml:"auth"`
+	Database DatabaseConfig `yaml:"database"`
 	Servers  []MCServer     `yaml:"servers"`
 }
 
@@ -19,14 +20,23 @@ type ServerConfig struct {
 }
 
 type AuthConfig struct {
-	Secret   string   `yaml:"secret"`
-	Users    []User   `yaml:"users"`
+	Secret string `yaml:"secret"`
+	Users  []User `yaml:"users"`
 }
 
 type User struct {
 	Username string `yaml:"username"`
 	Password string `yaml:"password"` // bcrypt hash
 	Role     string `yaml:"role"`     // admin, viewer
+}
+
+type DatabaseConfig struct {
+	Host     string `yaml:"host"`
+	Port     int    `yaml:"port"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
+	DBName   string `yaml:"dbname"`
+	SSLMode  string `yaml:"sslmode"`
 }
 
 type MCServer struct {
@@ -38,8 +48,8 @@ type MCServer struct {
 	JarFile     string `yaml:"jarFile"`     // velocity.jar
 	RconPort    int    `yaml:"rconPort"`
 	RconPass    string `yaml:"rconPass"`
-	MaxRAM      string `yaml:"maxRam"`      // 6G
-	MinRAM      string `yaml:"minRam"`      // 2G
+	MaxRAM      string `yaml:"maxRam"` // 6G
+	MinRAM      string `yaml:"minRam"` // 2G
 }
 
 var cfg *Config
@@ -53,6 +63,17 @@ func Load(path string) (*Config, error) {
 	cfg = &Config{}
 	if err := yaml.Unmarshal(data, cfg); err != nil {
 		return nil, err
+	}
+
+	// Set defaults for database
+	if cfg.Database.Host == "" {
+		cfg.Database.Host = "localhost"
+	}
+	if cfg.Database.Port == 0 {
+		cfg.Database.Port = 5432
+	}
+	if cfg.Database.SSLMode == "" {
+		cfg.Database.SSLMode = "disable"
 	}
 
 	return cfg, nil

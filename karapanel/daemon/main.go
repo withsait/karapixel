@@ -10,13 +10,14 @@ import (
 
 	"github.com/withsait/karapixel/karapanel/internal/api"
 	"github.com/withsait/karapixel/karapanel/internal/config"
+	"github.com/withsait/karapixel/karapanel/internal/database"
 	"github.com/withsait/karapixel/karapanel/internal/metrics"
 	"github.com/withsait/karapixel/karapanel/internal/server"
 )
 
 var (
 	configPath = flag.String("config", "configs/config.yml", "Path to config file")
-	version    = "0.1.0"
+	version    = "0.2.0"
 )
 
 func main() {
@@ -35,6 +36,26 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 	log.Printf("Config loaded from %s", *configPath)
+
+	// Connect to database
+	if cfg.Database.User != "" {
+		dbCfg := &database.DBConfig{
+			Host:     cfg.Database.Host,
+			Port:     cfg.Database.Port,
+			User:     cfg.Database.User,
+			Password: cfg.Database.Password,
+			DBName:   cfg.Database.DBName,
+			SSLMode:  cfg.Database.SSLMode,
+		}
+		if err := database.Connect(dbCfg); err != nil {
+			log.Printf("Warning: Failed to connect to database: %v", err)
+			log.Println("Some features will be unavailable")
+		} else {
+			defer database.Close()
+		}
+	} else {
+		log.Println("Database not configured, some features will be unavailable")
+	}
 
 	// Initialize server manager
 	manager, err := server.NewManager(cfg.Servers)
