@@ -1,0 +1,25 @@
+[Unit]
+Description=KaraPanel Daemon - Minecraft Server Control Panel
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/karapanel
+ExecStart=/opt/karapanel/karapanel-daemon -config /opt/karapanel/configs/config.yml
+Restart=always
+RestartSec=5
+
+# Security
+NoNewPrivileges=false
+ProtectSystem=false
+ProtectHome=false
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=karapanel
+
+[Install]
+WantedBy=multi-user.target

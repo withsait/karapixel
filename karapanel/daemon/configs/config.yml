@@ -1,0 +1,87 @@
+# KaraPanel Daemon Configuration
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+auth:
+  secret: "CHANGE_THIS_SECRET_IN_PRODUCTION"
+  users:
+    - username: "admin"
+      password: "$2a$10$example.hash.here" # bcrypt hash
+      role: "admin"
+
+servers:
+  - id: "velocity"
+    name: "Velocity Proxy"
+    type: "velocity"
+    serviceName: "velocity"
+    workDir: "/opt/karapixel/servers/velocity"
+    jarFile: "velocity.jar"
+    maxRam: "3G"
+    minRam: "1G"
+
+  - id: "hub"
+    name: "Hub"
+    type: "paper"
+    serviceName: "mc-hub"
+    workDir: "/opt/karapixel/servers/hub"
+    jarFile: "paper.jar"
+    rconPort: 25576
+    rconPass: ""
+    maxRam: "6G"
+    minRam: "2G"
+
+  - id: "skyblock-spawn"
+    name: "Skyblock Spawn"
+    type: "paper"
+    serviceName: "mc-skyblock-spawn"
+    workDir: "/opt/karapixel/servers/skyblock-spawn"
+    jarFile: "paper.jar"
+    rconPort: 25577
+    rconPass: ""
+    maxRam: "20G"
+    minRam: "8G"
+
+  - id: "pvp"
+    name: "PvP Arena"
+    type: "paper"
+    serviceName: "mc-pvp"
+    workDir: "/opt/karapixel/servers/pvp"
+    jarFile: "paper.jar"
+    rconPort: 25578
+    rconPass: ""
+    maxRam: "6G"
+    minRam: "2G"
+
+  - id: "world1"
+    name: "Skyblock World 1"
+    type: "paper"
+    serviceName: "mc-world1"
+    workDir: "/opt/karapixel/servers/world1"
+    jarFile: "paper.jar"
+    rconPort: 25579
+    rconPass: ""
+    maxRam: "24G"
+    minRam: "8G"
+
+  - id: "world2"
+    name: "Skyblock World 2"
+    type: "paper"
+    serviceName: "mc-world2"
+    workDir: "/opt/karapixel/servers/world2"
+    jarFile: "paper.jar"
+    rconPort: 25580
+    rconPass: ""
+    maxRam: "24G"
+    minRam: "8G"
+
+  - id: "nether"
+    name: "Nether/End"
+    type: "paper"
+    serviceName: "mc-nether"
+    workDir: "/opt/karapixel/servers/nether"
+    jarFile: "paper.jar"
+    rconPort: 25581
+    rconPass: ""
+    maxRam: "10G"
+    minRam: "4G"
