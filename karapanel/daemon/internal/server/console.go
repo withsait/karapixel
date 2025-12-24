@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"sync"
 )
 
@@ -173,33 +174,10 @@ func (cm *ConsoleManager) GetRecentLogs(serverID string, lines int) ([]string, e
 	}
 
 	var logs []string
-	scanner := bufio.NewScanner(string(output))
+	scanner := bufio.NewScanner(strings.NewReader(string(output)))
 	for scanner.Scan() {
 		logs = append(logs, scanner.Text())
 	}
 
 	return logs, nil
-}
-
-// bufio.Scanner for string - helper
-type stringReader struct {
-	*bufio.Scanner
-}
-
-func newStringScanner(s string) *bufio.Scanner {
-	return bufio.NewScanner(&stringReaderImpl{s: s, i: 0})
-}
-
-type stringReaderImpl struct {
-	s string
-	i int
-}
-
-func (r *stringReaderImpl) Read(p []byte) (n int, err error) {
-	if r.i >= len(r.s) {
-		return 0, io.EOF
-	}
-	n = copy(p, r.s[r.i:])
-	r.i += n
-	return n, nil
 }
