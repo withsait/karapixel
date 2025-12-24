@@ -1,0 +1,215 @@
+# ═══════════════════════════════════════════════════════════════
+# KaraPixel - English Language File
+# Version: 1.0.0
+# ═══════════════════════════════════════════════════════════════
+
+meta:
+  language: "English"
+  code: "en_US"
+  version: "1.0.0"
+  authors:
+    - "KaraPixel Team"
+
+# ═══════════════════════════════════════════════════════════════
+# GENERAL MESSAGES
+# ═══════════════════════════════════════════════════════════════
+general:
+  prefix: "<gradient:#FF6B6B:#4ECDC4>[KaraPixel]</gradient> "
+  
+  success: "<green>✓ Success!</green>"
+  error: "<red>✗ Error: {message}</red>"
+  warning: "<yellow>⚠ Warning: {message}</yellow>"
+  info: "<aqua>ℹ {message}</aqua>"
+  loading: "<gray>Loading...</gray>"
+  
+  no_permission: "<red>You don't have permission for this!</red>"
+  player_only: "<red>This command can only be used by players!</red>"
+  console_only: "<red>This command can only be used from console!</red>"
+  
+  player_not_found: "<red>Player not found: <white>{player}</white></red>"
+  player_offline: "<red><white>{player}</white> is currently offline.</red>"
+  player_self: "<red>You cannot use this command on yourself!</red>"
+  
+  confirm: "<green>Confirm</green>"
+  cancel: "<red>Cancel</red>"
+  yes: "<green>Yes</green>"
+  no: "<red>No</red>"
+  back: "<gray>« Back</gray>"
+  close: "<red>✕ Close</red>"
+  
+  currency: "⛃"
+  currency_name: "Kara Coin"
+  
+  time:
+    now: "now"
+    seconds: "{value} seconds"
+    minutes: "{value} minutes"
+    hours: "{value} hours"
+    days: "{value} days"
+    ago: "{time} ago"
+    remaining: "{time} remaining"
+    forever: "Forever"
+
+# ═══════════════════════════════════════════════════════════════
+# AUTH SYSTEM
+# ═══════════════════════════════════════════════════════════════
+auth:
+  welcome: |
+    <yellow>═══════════════════════════════════════════════════</yellow>
+    
+           <gold><bold>KaraPixel</bold></gold> <gray>Welcome to the server!</gray>
+    
+    <yellow>═══════════════════════════════════════════════════</yellow>
+  
+  register:
+    prompt: "<yellow>To register:</yellow> <white>/register <password> <password></white>"
+    success: "<green>Successfully registered! Redirecting to hub...</green>"
+    already_registered: "<red>You are already registered!</red> <yellow>Login: /login <password></yellow>"
+    password_mismatch: "<red>Passwords do not match! Try again.</red>"
+    password_too_short: "<red>Password must be at least <white>{min}</white> characters!</red>"
+    password_too_long: "<red>Password can be maximum <white>{max}</white> characters!</red>"
+    
+  login:
+    prompt: "<yellow>To login:</yellow> <white>/login <password></white>"
+    success: "<green>Login successful!</green> <gray>Welcome, <white>{player}</white>!</gray>"
+    wrong_password: "<red>Wrong password!</red> <gray>Remaining attempts: <white>{remaining}</white></gray>"
+    not_registered: "<red>You are not registered!</red> <yellow>Register: /register <password> <password></yellow>"
+    
+  too_many_attempts: "<red>Too many failed attempts!</red> <gray>Wait <white>{duration}</white>.</gray>"
+  timeout: "<red>Login timeout!</red> <gray>Please reconnect.</gray>"
+  auto_login: "<green>Automatically logged in with your Xbox account!</green>"
+
+# ═══════════════════════════════════════════════════════════════
+# HUB LOBBY
+# ═══════════════════════════════════════════════════════════════
+hub:
+  welcome: "<green>Welcome to the Hub!</green>"
+  teleporting: "<yellow>Teleporting to hub...</yellow>"
+  
+  items:
+    server_selector:
+      name: "<green>⚔ Game Selector</green>"
+      lore:
+        - ""
+        - "<gray>Select a game mode and play!</gray>"
+        - ""
+        - "<yellow>▸ Right-click!</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# GAME SELECTOR
+# ═══════════════════════════════════════════════════════════════
+selector:
+  menu:
+    title: "⚔ Game Selector"
+    
+  games:
+    skyblock:
+      name: "<green>⛏ Skyblock</green>"
+      lore:
+        - ""
+        - "<gray>Create and develop your own island!</gray>"
+        - "<gray>Play together with friends!</gray>"
+        - ""
+        - "<dark_gray>Online: <green>{online}</green></dark_gray>"
+        - ""
+        - "<yellow>▸ Click to start!</yellow>"
+        
+    coming_soon:
+      name: "<gray>🔒 Coming Soon...</gray>"
+      lore:
+        - ""
+        - "<gray>This mode is not active yet.</gray>"
+        - "<gray>Stay tuned!</gray>"
+
+# ═══════════════════════════════════════════════════════════════
+# SKYBLOCK
+# ═══════════════════════════════════════════════════════════════
+skyblock:
+  welcome: "<green>Welcome to Skyblock!</green>"
+  
+  island:
+    creating: "<yellow>Creating your island...</yellow>"
+    created: "<green>Island created successfully!</green> <gray>Use /is home to go.</gray>"
+    teleporting: "<yellow>Teleporting to your island...</yellow>"
+    no_island: "<red>You don't have an island yet!</red> <yellow>Use /is create to create one.</yellow>"
+    already_has: "<red>You already have an island!</red>"
+    
+  templates:
+    menu_title: "🏝 Select Island Template"
+    normal:
+      name: "<green>🌳 Normal Island</green>"
+      lore:
+        - ""
+        - "<gray>Classic skyblock experience</gray>"
+        - "<gray>A tree and basic materials</gray>"
+        
+  coop:
+    invited: "<yellow><white>{player}</white> invited you to their island!</yellow>"
+    joined: "<green><white>{player}</white> joined your island!</green>"
+    left: "<red><white>{player}</white> left your island.</red>"
+    
+  roles:
+    owner: "<gold>Island Owner</gold>"
+    admin: "<red>Admin</red>"
+    member: "<green>Member</green>"
+    visitor: "<gray>Visitor</gray>"
+    
+  generator:
+    placed: "<green><white>{generator}</white> placed!</green>"
+    upgraded: "<green><white>{generator}</white> upgraded to level <gold>{level}</gold>!</green>"
+
+# ═══════════════════════════════════════════════════════════════
+# ECONOMY
+# ═══════════════════════════════════════════════════════════════
+economy:
+  balance: "<gold>Balance: <white>{balance}</white></gold>"
+  
+  transfer:
+    success: "<green><white>{amount}</white> sent to <white>{player}</white>.</green>"
+    received: "<green><white>{player}</white> sent you <white>{amount}</white>!</green>"
+    not_enough: "<red>Insufficient balance!</red>"
+
+# ═══════════════════════════════════════════════════════════════
+# SKILLS
+# ═══════════════════════════════════════════════════════════════
+skills:
+  names:
+    mining: "⛏ Mining"
+    farming: "🌾 Farming"
+    combat: "⚔ Combat"
+    fishing: "🎣 Fishing"
+    foraging: "🪓 Foraging"
+    enchanting: "✨ Enchanting"
+    
+  level_up: |
+    
+    <gold>═══════════════════════════════════════</gold>
+           <yellow><bold>⬆ LEVEL UP!</bold></yellow>
+    <gold>═══════════════════════════════════════</gold>
+    
+         <gray>{skill}</gray> <white>→</white> <green>Level {level}</green>
+    
+  xp_gain: "<gray>+{xp} {skill} XP</gray>"
+
+# ═══════════════════════════════════════════════════════════════
+# RANKS
+# ═══════════════════════════════════════════════════════════════
+ranks:
+  names:
+    default: "<gray>Player</gray>"
+    vip: "<green>VIP</green>"
+    vip_plus: "<green>VIP<gold>+</gold></green>"
+    mvp: "<aqua>MVP</aqua>"
+    mvp_plus: "<aqua>MVP<red>+</red></aqua>"
+    admin: "<red>Admin</red>"
+
+# ═══════════════════════════════════════════════════════════════
+# RARITY LEVELS
+# ═══════════════════════════════════════════════════════════════
+rarity:
+  common: "<gray>Common</gray>"
+  uncommon: "<green>Uncommon</green>"
+  rare: "<blue>Rare</blue>"
+  epic: "<dark_purple>Epic</dark_purple>"
+  legendary: "<gold>Legendary</gold>"
+  mythic: "<light_purple>Mythic</light_purple>"

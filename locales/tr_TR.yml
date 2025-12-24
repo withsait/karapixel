@@ -1,0 +1,634 @@
+# ═══════════════════════════════════════════════════════════════
+# KaraPixel - Türkçe Dil Dosyası
+# Versiyon: 1.0.0
+# ═══════════════════════════════════════════════════════════════
+
+meta:
+  language: "Türkçe"
+  code: "tr_TR"
+  version: "1.0.0"
+  authors:
+    - "KaraPixel Team"
+
+# ═══════════════════════════════════════════════════════════════
+# GENEL MESAJLAR
+# ═══════════════════════════════════════════════════════════════
+general:
+  prefix: "<gradient:#FF6B6B:#4ECDC4>[KaraPixel]</gradient> "
+  
+  # Durum mesajları
+  success: "<green>✓ Başarılı!</green>"
+  error: "<red>✗ Hata: {message}</red>"
+  warning: "<yellow>⚠ Uyarı: {message}</yellow>"
+  info: "<aqua>ℹ {message}</aqua>"
+  loading: "<gray>Yükleniyor...</gray>"
+  
+  # Yetki mesajları
+  no_permission: "<red>Bu işlem için yetkiniz yok!</red>"
+  player_only: "<red>Bu komut sadece oyuncular tarafından kullanılabilir!</red>"
+  console_only: "<red>Bu komut sadece konsoldan kullanılabilir!</red>"
+  
+  # Oyuncu mesajları
+  player_not_found: "<red>Oyuncu bulunamadı: <white>{player}</white></red>"
+  player_offline: "<red><white>{player}</white> şu anda çevrimdışı.</red>"
+  player_self: "<red>Bu komutu kendinize kullanamazsınız!</red>"
+  
+  # Onay/İptal
+  confirm: "<green>Onayla</green>"
+  cancel: "<red>İptal</red>"
+  yes: "<green>Evet</green>"
+  no: "<red>Hayır</red>"
+  back: "<gray>« Geri</gray>"
+  close: "<red>✕ Kapat</red>"
+  next_page: "<yellow>Sonraki Sayfa »</yellow>"
+  prev_page: "<yellow>« Önceki Sayfa</yellow>"
+  
+  # Sayılar
+  currency: "⛃"
+  currency_name: "Kara Coin"
+  currency_format: "{symbol}{amount}"
+  
+  # Zaman formatları
+  time:
+    now: "şimdi"
+    seconds: "{value} saniye"
+    minutes: "{value} dakika"
+    hours: "{value} saat"
+    days: "{value} gün"
+    weeks: "{value} hafta"
+    months: "{value} ay"
+    years: "{value} yıl"
+    ago: "{time} önce"
+    remaining: "{time} kaldı"
+    forever: "Süresiz"
+
+# ═══════════════════════════════════════════════════════════════
+# AUTH SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+auth:
+  # Karşılama
+  welcome: |
+    <yellow>═══════════════════════════════════════════════════</yellow>
+    
+           <gold><bold>KaraPixel</bold></gold> <gray>sunucusuna hoş geldin!</gray>
+    
+    <yellow>═══════════════════════════════════════════════════</yellow>
+  
+  # Kayıt
+  register:
+    prompt: "<yellow>Kayıt olmak için:</yellow> <white>/register <şifre> <şifre></white>"
+    success: "<green>Başarıyla kayıt oldun! Hub'a yönlendiriliyorsun...</green>"
+    already_registered: "<red>Zaten kayıtlısın!</red> <yellow>Giriş için: /login <şifre></yellow>"
+    password_mismatch: "<red>Şifreler eşleşmiyor! Tekrar dene.</red>"
+    password_too_short: "<red>Şifre en az <white>{min}</white> karakter olmalı!</red>"
+    password_too_long: "<red>Şifre en fazla <white>{max}</white> karakter olabilir!</red>"
+    password_weak: "<red>Şifre çok basit! Daha güçlü bir şifre seç.</red>"
+    
+  # Giriş
+  login:
+    prompt: "<yellow>Giriş yapmak için:</yellow> <white>/login <şifre></white>"
+    success: "<green>Giriş başarılı!</green> <gray>Hoş geldin, <white>{player}</white>!</gray>"
+    wrong_password: "<red>Yanlış şifre!</red> <gray>Kalan hak: <white>{remaining}</white></gray>"
+    not_registered: "<red>Kayıtlı değilsin!</red> <yellow>Kayıt için: /register <şifre> <şifre></yellow>"
+    already_logged_in: "<yellow>Zaten giriş yapmışsın!</yellow>"
+    
+  # Güvenlik
+  too_many_attempts: "<red>Çok fazla başarısız deneme!</red> <gray><white>{duration}</white> beklemelisin.</gray>"
+  timeout: "<red>Giriş süresi doldu!</red> <gray>Lütfen tekrar bağlan.</gray>"
+  session_expired: "<yellow>Oturumun sona erdi.</yellow> <gray>Lütfen tekrar giriş yap.</gray>"
+  kicked_duplicate: "<red>Başka bir yerden giriş yapıldı!</red>"
+  
+  # Bedrock
+  auto_login: "<green>Xbox hesabın ile otomatik giriş yapıldı!</green>"
+  
+  # Şifre değiştirme
+  change_password:
+    usage: "<yellow>Kullanım:</yellow> <white>/changepassword <eski_şifre> <yeni_şifre></white>"
+    success: "<green>Şifren başarıyla değiştirildi!</green>"
+    wrong_current: "<red>Mevcut şifre yanlış!</red>"
+    same_password: "<red>Yeni şifre eskisiyle aynı olamaz!</red>"
+    
+  # Captcha
+  captcha:
+    prompt: "<yellow>Lütfen captcha'yı çöz:</yellow>"
+    instruction: "<gray>Aşağıdaki kodu yaz: <white>{code}</white></gray>"
+    success: "<green>Captcha doğrulandı!</green>"
+    failed: "<red>Yanlış cevap! Tekrar dene.</red>"
+    new_code: "<yellow>Yeni kod gönderildi.</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# HUB LOBİSİ
+# ═══════════════════════════════════════════════════════════════
+hub:
+  # Genel
+  welcome: "<green>Hub'a hoş geldin!</green>"
+  teleporting: "<yellow>Hub'a ışınlanıyorsun...</yellow>"
+  already_in_hub: "<yellow>Zaten hub'dasın!</yellow>"
+  
+  # Hotbar Items
+  items:
+    server_selector:
+      name: "<green>⚔ Oyun Seçici</green>"
+      lore:
+        - ""
+        - "<gray>Bir oyun modu seç ve oyna!</gray>"
+        - ""
+        - "<yellow>▸ Sağ tıkla!</yellow>"
+        
+    cosmetics:
+      name: "<light_purple>✨ Kozmetikler</light_purple>"
+      lore:
+        - ""
+        - "<gray>Görünümünü özelleştir!</gray>"
+        - ""
+        - "<yellow>▸ Sağ tıkla!</yellow>"
+        
+    profile:
+      name: "<aqua>👤 Profil</aqua>"
+      lore:
+        - ""
+        - "<gray>İstatistiklerini görüntüle</gray>"
+        - ""
+        - "<yellow>▸ Sağ tıkla!</yellow>"
+        
+    settings:
+      name: "<gold>⚙ Ayarlar</gold>"
+      lore:
+        - ""
+        - "<gray>Oyun ayarlarını düzenle</gray>"
+        - ""
+        - "<yellow>▸ Sağ tıkla!</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# OYUN SEÇİCİ
+# ═══════════════════════════════════════════════════════════════
+selector:
+  menu:
+    title: "⚔ Oyun Seçici"
+    
+  games:
+    skyblock:
+      name: "<green>⛏ Skyblock</green>"
+      lore:
+        - ""
+        - "<gray>Kendi adanı oluştur ve geliştir!</gray>"
+        - "<gray>Arkadaşlarınla birlikte oyna!</gray>"
+        - ""
+        - "<dark_gray>Çevrimiçi: <green>{online}</green></dark_gray>"
+        - ""
+        - "<yellow>▸ Tıkla ve başla!</yellow>"
+        
+    survival:
+      name: "<yellow>🌍 Survival</yellow>"
+      lore:
+        - ""
+        - "<gray>Klasik hayatta kalma deneyimi!</gray>"
+        - ""
+        - "<red>Yakında...</red>"
+        
+    bedwars:
+      name: "<red>🛏 BedWars</red>"
+      lore:
+        - ""
+        - "<gray>Yatağını koru, rakiplerin yataklarını yok et!</gray>"
+        - ""
+        - "<red>Yakında...</red>"
+        
+    coming_soon:
+      name: "<gray>🔒 Yakında...</gray>"
+      lore:
+        - ""
+        - "<gray>Bu mod henüz aktif değil.</gray>"
+        - "<gray>Takipte kal!</gray>"
+
+# ═══════════════════════════════════════════════════════════════
+# SKYBLOCK
+# ═══════════════════════════════════════════════════════════════
+skyblock:
+  # Genel
+  welcome: "<green>Skyblock'a hoş geldin!</green>"
+  
+  # Ada oluşturma
+  island:
+    creating: "<yellow>Adan oluşturuluyor...</yellow>"
+    created: "<green>Adan başarıyla oluşturuldu!</green> <gray>/is home ile git.</gray>"
+    teleporting: "<yellow>Adana ışınlanıyorsun...</yellow>"
+    teleported: "<green>Adana ışınlandın!</green>"
+    no_island: "<red>Henüz bir adan yok!</red> <yellow>/is create ile oluştur.</yellow>"
+    already_has: "<red>Zaten bir adan var!</red>"
+    deleted: "<red>Adan silindi!</red>"
+    
+    # Ada bilgileri
+    info:
+      header: "<gold>═══ Ada Bilgileri ═══</gold>"
+      name: "<gray>Ada İsmi:</gray> <white>{name}</white>"
+      owner: "<gray>Sahip:</gray> <white>{owner}</white>"
+      level: "<gray>Seviye:</gray> <yellow>{level}</yellow>"
+      members: "<gray>Üyeler:</gray> <white>{count}/{max}</white>"
+      created: "<gray>Oluşturulma:</gray> <white>{date}</white>"
+      
+  # Şablonlar
+  templates:
+    menu_title: "🏝 Ada Şablonu Seç"
+    
+    normal:
+      name: "<green>🌳 Normal Ada</green>"
+      lore:
+        - ""
+        - "<gray>Klasik skyblock deneyimi</gray>"
+        - "<gray>Bir ağaç ve temel malzemeler</gray>"
+        - ""
+        - "<yellow>▸ Tıkla ve seç!</yellow>"
+        
+    desert:
+      name: "<yellow>🏜️ Çöl Adası</yellow>"
+      lore:
+        - ""
+        - "<gray>Kumdan bir ada</gray>"
+        - "<gray>Kaktüs ve hurma ağacı</gray>"
+        - ""
+        - "<yellow>▸ Tıkla ve seç!</yellow>"
+        
+    nether:
+      name: "<red>🔥 Nether Adası</red>"
+      lore:
+        - ""
+        - "<gray>Cehennem temalı ada</gray>"
+        - "<gray>Netherrack ve soul sand</gray>"
+        - ""
+        - "<dark_gray>Gereksinim: Seviye {level}</dark_gray>"
+        - ""
+        - "<yellow>▸ Tıkla ve seç!</yellow>"
+        
+    winter:
+      name: "<aqua>❄️ Kış Adası</aqua>"
+      lore:
+        - ""
+        - "<gray>Karlı bir ada</gray>"
+        - "<gray>Ladin ağacı ve buz</gray>"
+        - ""
+        - "<dark_gray>Gereksinim: Seviye {level}</dark_gray>"
+        - ""
+        - "<yellow>▸ Tıkla ve seç!</yellow>"
+        
+  # Coop
+  coop:
+    invited: "<yellow><white>{player}</white> seni adasına davet etti!</yellow>"
+    invite_sent: "<green><white>{player}</white> adresine davet gönderildi.</green>"
+    invite_expired: "<red>Davet süresi doldu.</red>"
+    joined: "<green><white>{player}</white> adana katıldı!</green>"
+    left: "<red><white>{player}</white> adandan ayrıldı.</red>"
+    kicked: "<red><white>{player}</white> adadan atıldı.</red>"
+    promoted: "<green><white>{player}</white> <gold>{role}</gold> rolüne yükseltildi.</green>"
+    demoted: "<yellow><white>{player}</white> <gold>{role}</gold> rolüne düşürüldü.</yellow>"
+    
+    already_member: "<red>Bu oyuncu zaten ada üyesi!</red>"
+    not_member: "<red>Bu oyuncu ada üyesi değil!</red>"
+    max_members: "<red>Ada üye limitine ulaştın! ({count}/{max})</red>"
+    cannot_kick_owner: "<red>Ada sahibini atamazsın!</red>"
+    cannot_leave_owner: "<red>Ada sahibi olarak ayrılamazsın! Önce adayı devret veya sil.</red>"
+    
+  # Roller
+  roles:
+    owner: "<gold>Ada Sahibi</gold>"
+    admin: "<red>Yönetici</red>"
+    member: "<green>Üye</green>"
+    visitor: "<gray>Ziyaretçi</gray>"
+    
+  # Generator
+  generator:
+    placed: "<green><white>{generator}</white> yerleştirildi!</green>"
+    removed: "<yellow><white>{generator}</white> kaldırıldı.</yellow>"
+    upgraded: "<green><white>{generator}</white> seviye <gold>{level}</gold> oldu!</green>"
+    max_level: "<yellow>Bu generator maksimum seviyede!</yellow>"
+    limit_reached: "<red>Generator limitine ulaştın! ({count}/{max})</red>"
+    not_enough_money: "<red>Yeterli paran yok! Gereken: <white>{amount}</white></red>"
+    
+    types:
+      cobblestone: "Taş Generator"
+      iron: "Demir Generator"
+      gold: "Altın Generator"
+      diamond: "Elmas Generator"
+      emerald: "Zümrüt Generator"
+      
+  # Yükseltmeler
+  upgrades:
+    menu_title: "⬆ Ada Yükseltmeleri"
+    purchased: "<green><white>{upgrade}</white> satın alındı!</green>"
+    not_enough_money: "<red>Yeterli paran yok! Gereken: <white>{amount}</white></red>"
+    already_max: "<yellow>Bu yükseltme zaten maksimum seviyede!</yellow>"
+    
+    types:
+      size: "Ada Boyutu"
+      members: "Üye Limiti"
+      generators: "Generator Limiti"
+      hoppers: "Hopper Limiti"
+      spawners: "Spawner Limiti"
+
+# ═══════════════════════════════════════════════════════════════
+# EKONOMİ
+# ═══════════════════════════════════════════════════════════════
+economy:
+  balance: "<gold>Bakiyen: <white>{balance}</white></gold>"
+  balance_other: "<gold><white>{player}</white> bakiyesi: <white>{balance}</white></gold>"
+  
+  # Transfer
+  transfer:
+    usage: "<yellow>Kullanım:</yellow> <white>/pay <oyuncu> <miktar></white>"
+    success: "<green><white>{amount}</white> <white>{player}</white> adresine gönderildi.</green>"
+    received: "<green><white>{player}</white> sana <white>{amount}</white> gönderdi!</green>"
+    not_enough: "<red>Yeterli bakiyen yok!</red>"
+    self: "<red>Kendine para gönderemezsin!</red>"
+    minimum: "<red>Minimum transfer miktarı: <white>{amount}</white></red>"
+    invalid_amount: "<red>Geçersiz miktar!</red>"
+    
+  # Bank
+  bank:
+    menu_title: "💰 Ada Bankası"
+    balance: "<gold>Banka Bakiyesi: <white>{balance}</white></gold>"
+    deposited: "<green><white>{amount}</white> bankaya yatırıldı.</green>"
+    withdrawn: "<green><white>{amount}</white> bankadan çekildi.</green>"
+    not_enough_bank: "<red>Bankada yeterli para yok!</red>"
+    not_enough_personal: "<red>Cüzdanında yeterli para yok!</red>"
+
+# ═══════════════════════════════════════════════════════════════
+# SKILL SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+skills:
+  # Skill isimleri
+  names:
+    mining: "⛏ Madencilik"
+    farming: "🌾 Çiftçilik"
+    combat: "⚔ Savaş"
+    fishing: "🎣 Balıkçılık"
+    foraging: "🪓 Ormancılık"
+    enchanting: "✨ Büyüleme"
+    
+  # Menü
+  menu:
+    title: "📊 Yetenekler"
+    
+  # Seviye mesajları
+  level_up: |
+    
+    <gold>═══════════════════════════════════════</gold>
+           <yellow><bold>⬆ SEVİYE ATLADIN!</bold></yellow>
+    <gold>═══════════════════════════════════════</gold>
+    
+         <gray>{skill}</gray> <white>→</white> <green>Seviye {level}</green>
+    
+  xp_gain: "<gray>+{xp} {skill} XP</gray>"
+  progress: "<gray>İlerleme:</gray> <yellow>{current}</yellow><gray>/</gray><gold>{next}</gold>"
+
+# ═══════════════════════════════════════════════════════════════
+# GÖREV SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+quests:
+  menu:
+    title: "📋 Görevler"
+    daily_title: "📅 Günlük Görevler"
+    weekly_title: "📆 Haftalık Görevler"
+    
+  completed: "<green>Görev tamamlandı: <white>{quest}</white></green>"
+  progress: "<yellow>Görev ilerlemesi: <white>{current}/{target}</white></yellow>"
+  reward_claimed: "<green>Ödül alındı!</green>"
+  already_completed: "<yellow>Bu görevi zaten tamamladın!</yellow>"
+  
+  reset:
+    daily: "<yellow>Günlük görevler sıfırlandı!</yellow>"
+    weekly: "<yellow>Haftalık görevler sıfırlandı!</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# MAĞAZA
+# ═══════════════════════════════════════════════════════════════
+shop:
+  menu:
+    title: "🛒 Mağaza"
+    categories_title: "📦 Kategoriler"
+    
+  buy:
+    success: "<green><white>{amount}x {item}</white> satın aldın. (<white>-{price}</white>)</green>"
+    not_enough_money: "<red>Yeterli paran yok! Gereken: <white>{price}</white></red>"
+    inventory_full: "<red>Envanterin dolu!</red>"
+    
+  sell:
+    success: "<green><white>{amount}x {item}</white> sattın. (<white>+{price}</white>)</green>"
+    no_items: "<red>Satılacak item bulunamadı!</red>"
+    not_sellable: "<red>Bu item satılamaz!</red>"
+    
+  # Butonlar
+  buttons:
+    buy: "<green>Satın Al</green>"
+    sell: "<red>Sat</red>"
+    buy_stack: "<green>64x Satın Al</green>"
+    sell_all: "<red>Hepsini Sat</red>"
+    price: "<gold>Fiyat: {price}</gold>"
+    sell_price: "<yellow>Satış: {price}</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# KOZMETİKLER
+# ═══════════════════════════════════════════════════════════════
+cosmetics:
+  menu:
+    title: "✨ Kozmetikler"
+    
+  types:
+    particles: "<light_purple>✨ Partiküller</light_purple>"
+    wings: "<aqua>🪽 Kanatlar</aqua>"
+    hats: "<gold>👑 Şapkalar</gold>"
+    pets: "<green>🐾 Evcil Hayvanlar</green>"
+    trails: "<blue>💫 İzler</blue>"
+    kill_effects: "<red>💀 Öldürme Efektleri</red>"
+    
+  equipped: "<green>Kuşanıldı!</green>"
+  unequipped: "<yellow>Çıkarıldı.</yellow>"
+  not_owned: "<red>Bu kozmetiğe sahip değilsin!</red>"
+  already_equipped: "<yellow>Bu zaten kuşanılmış!</yellow>"
+  
+  lore:
+    owned: "<green>✓ Sahipsin</green>"
+    not_owned: "<red>✗ Sahip değilsin</red>"
+    equipped: "<yellow>► Kuşanılmış</yellow>"
+    click_equip: "<yellow>▸ Tıkla ve kuşan!</yellow>"
+    click_unequip: "<yellow>▸ Tıkla ve çıkar!</yellow>"
+    click_preview: "<gray>▸ Shift+Tıkla: Önizle</gray>"
+
+# ═══════════════════════════════════════════════════════════════
+# PET SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+pets:
+  menu:
+    title: "🐾 Evcil Hayvanlar"
+    
+  spawned: "<green><white>{pet}</white> çağrıldı!</green>"
+  despawned: "<yellow><white>{pet}</white> geri gönderildi.</yellow>"
+  renamed: "<green>Pet ismi değiştirildi: <white>{name}</white></green>"
+  level_up: "<green><white>{pet}</white> seviye atladı! <gold>Seviye {level}</gold></green>"
+  
+  types:
+    dog: "🐕 Köpek"
+    cat: "🐈 Kedi"
+    parrot: "🦜 Papağan"
+    wolf: "🐺 Kurt"
+    fox: "🦊 Tilki"
+    dragon: "🐉 Ejderha"
+    phoenix: "🔥 Anka Kuşu"
+    robot: "🤖 Robot"
+
+# ═══════════════════════════════════════════════════════════════
+# RANK SİSTEMİ
+# ═══════════════════════════════════════════════════════════════
+ranks:
+  names:
+    default: "<gray>Oyuncu</gray>"
+    vip: "<green>VIP</green>"
+    vip_plus: "<green>VIP<gold>+</gold></green>"
+    mvp: "<aqua>MVP</aqua>"
+    mvp_plus: "<aqua>MVP<red>+</red></aqua>"
+    elite: "<light_purple>Elite</light_purple>"
+    legend: "<gold>Legend</gold>"
+    admin: "<red>Admin</red>"
+    owner: "<dark_red>Owner</dark_red>"
+    
+  prefix:
+    default: "<gray>[Oyuncu]</gray>"
+    vip: "<green>[VIP]</green>"
+    vip_plus: "<green>[VIP<gold>+</gold>]</green>"
+    mvp: "<aqua>[MVP]</aqua>"
+    mvp_plus: "<aqua>[MVP<red>+</red>]</aqua>"
+    elite: "<light_purple>[Elite]</light_purple>"
+    legend: "<gold>[Legend]</gold>"
+    admin: "<red>[Admin]</red>"
+    owner: "<dark_red>[Owner]</dark_red>"
+    
+  purchased: "<green><white>{rank}</white> satın alındı! Tebrikler!</green>"
+  expired: "<yellow><white>{rank}</white> rankın süresi doldu.</yellow>"
+
+# ═══════════════════════════════════════════════════════════════
+# CHAT
+# ═══════════════════════════════════════════════════════════════
+chat:
+  format: "{prefix} {player}<gray>:</gray> <white>{message}</white>"
+  
+  # Özel mesajlar
+  msg:
+    send: "<gray>[<white>Sen</white> → <white>{player}</white>]</gray> <white>{message}</white>"
+    receive: "<gray>[<white>{player}</white> → <white>Sen</white>]</gray> <white>{message}</white>"
+    
+  reply:
+    no_target: "<red>Yanıtlayacak kimse yok!</red>"
+    player_offline: "<red>Bu oyuncu artık çevrimiçi değil!</red>"
+    
+  # Kanallar
+  channels:
+    global: "<red>[G]</red>"
+    island: "<green>[Ada]</green>"
+    party: "<blue>[Parti]</blue>"
+    staff: "<dark_red>[Staff]</dark_red>"
+    
+  # Muted
+  muted: "<red>Susturuldun!</red> <gray>Kalan süre: <white>{duration}</white></gray>"
+  
+  # Cooldown
+  cooldown: "<red>Çok hızlı yazıyorsun!</red> <gray><white>{seconds}</white> saniye bekle.</gray>"
+
+# ═══════════════════════════════════════════════════════════════
+# MODERASYON
+# ═══════════════════════════════════════════════════════════════
+moderation:
+  # Ban
+  ban:
+    permanent: |
+      <red>Sunucudan kalıcı olarak yasaklandın!</red>
+      
+      <gray>Sebep: <white>{reason}</white></gray>
+      <gray>Yetkili: <white>{staff}</white></gray>
+      
+      <yellow>İtiraz: discord.karapixel.net</yellow>
+      
+    temporary: |
+      <red>Sunucudan geçici olarak yasaklandın!</red>
+      
+      <gray>Sebep: <white>{reason}</white></gray>
+      <gray>Kalan süre: <white>{duration}</white></gray>
+      <gray>Yetkili: <white>{staff}</white></gray>
+      
+      <yellow>İtiraz: discord.karapixel.net</yellow>
+      
+    broadcast: "<red><white>{player}</white> sunucudan yasaklandı.</red> <gray>Sebep: {reason}</gray>"
+    
+  # Kick
+  kick:
+    message: |
+      <red>Sunucudan atıldın!</red>
+      
+      <gray>Sebep: <white>{reason}</white></gray>
+      
+    broadcast: "<yellow><white>{player}</white> sunucudan atıldı.</yellow>"
+    
+  # Mute
+  mute:
+    message: "<red>Susturuldun!</red> <gray>Süre: <white>{duration}</white></gray>"
+    broadcast: "<yellow><white>{player}</white> susturuldu.</yellow>"
+    try_chat: "<red>Susturuldun!</red> <gray>Kalan süre: <white>{duration}</white></gray>"
+    
+  # Warn
+  warn:
+    message: "<yellow>Uyarıldın!</yellow> <gray>Sebep: <white>{reason}</white></gray>"
+    broadcast: "<yellow><white>{player}</white> uyarıldı. ({count}/3)</yellow>"
+    
+  # Pardon
+  unban: "<green><white>{player}</white> yasağı kaldırıldı.</green>"
+  unmute: "<green><white>{player}</white> susturması kaldırıldı.</green>"
+
+# ═══════════════════════════════════════════════════════════════
+# MENÜ BAŞLIKLARI
+# ═══════════════════════════════════════════════════════════════
+menu:
+  island:
+    title: "🏝 Ada Menüsü"
+    home: "<green>🏠 Eve Git</green>"
+    members: "<aqua>👥 Üyeler</aqua>"
+    settings: "<gold>⚙ Ayarlar</gold>"
+    upgrades: "<light_purple>⬆ Yükseltmeler</light_purple>"
+    bank: "<yellow>💰 Banka</yellow>"
+    missions: "<blue>📋 Görevler</blue>"
+    warps: "<aqua>🚀 Warp'lar</aqua>"
+    border: "<red>🔲 Sınır</red>"
+    
+  profile:
+    title: "👤 Profil"
+    statistics: "<gray>📊 İstatistikler</gray>"
+    achievements: "<gold>🏆 Başarılar</gold>"
+    settings: "<blue>⚙ Ayarlar</blue>"
+
+# ═══════════════════════════════════════════════════════════════
+# NADİRLİK SEVİYELERİ
+# ═══════════════════════════════════════════════════════════════
+rarity:
+  common: "<gray>Yaygın</gray>"
+  uncommon: "<green>Nadir Değil</green>"
+  rare: "<blue>Nadir</blue>"
+  epic: "<dark_purple>Epik</dark_purple>"
+  legendary: "<gold>Efsanevi</gold>"
+  mythic: "<light_purple>Mitik</light_purple>"
+
+# ═══════════════════════════════════════════════════════════════
+# KOMUT KULLANIMI
+# ═══════════════════════════════════════════════════════════════
+commands:
+  usage:
+    island: |
+      <gold>═══ Ada Komutları ═══</gold>
+      <yellow>/is create</yellow> <gray>- Ada oluştur</gray>
+      <yellow>/is home</yellow> <gray>- Adana git</gray>
+      <yellow>/is menu</yellow> <gray>- Ada menüsü</gray>
+      <yellow>/is invite <oyuncu></yellow> <gray>- Davet gönder</gray>
+      <yellow>/is kick <oyuncu></yellow> <gray>- Üyeyi at</gray>
+      <yellow>/is settings</yellow> <gray>- Ada ayarları</gray>
+      
+    economy: |
+      <gold>═══ Ekonomi Komutları ═══</gold>
+      <yellow>/balance</yellow> <gray>- Bakiyeni gör</gray>
+      <yellow>/pay <oyuncu> <miktar></yellow> <gray>- Para gönder</gray>
+      <yellow>/baltop</yellow> <gray>- En zenginler</gray>

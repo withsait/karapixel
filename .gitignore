@@ -1,0 +1,28 @@
+# Credentials - ASLA commit etme
+.claude/server-credentials.env
+*.env
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build
+node_modules/
+dist/
+build/
+target/
+
+# Temp
+*.tmp
+*.temp
