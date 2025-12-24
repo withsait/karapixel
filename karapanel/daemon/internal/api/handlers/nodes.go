@@ -3,6 +3,7 @@ package handlers
 import (
 	"crypto/rand"
 	"encoding/hex"
+	"fmt"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -324,7 +325,7 @@ func (h *NodeHandler) CreateAllocation(c *fiber.Ctx) error {
 	// If port range is specified, create multiple allocations
 	if input.PortRange != "" {
 		var startPort, endPort int
-		_, err := strconv.Sscanf(input.PortRange, "%d-%d", &startPort, &endPort)
+		_, err := fmt.Sscanf(input.PortRange, "%d-%d", &startPort, &endPort)
 		if err != nil || startPort > endPort || startPort < 1 || endPort > 65535 {
 			return c.Status(400).JSON(fiber.Map{
 				"error": "Invalid port range",

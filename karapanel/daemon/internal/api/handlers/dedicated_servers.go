@@ -3,6 +3,7 @@ package handlers
 import (
 	"crypto/rand"
 	"encoding/hex"
+	"encoding/json"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -158,7 +159,7 @@ func (h *DedicatedServerHandler) CreateServer(c *fiber.Ctx) error {
 	// Convert environment to JSON
 	var envJSON []byte
 	if input.Environment != nil {
-		envJSON, _ = fiber.Marshal(input.Environment)
+		envJSON, _ = json.Marshal(input.Environment)
 	}
 
 	server := &models.Server{
@@ -240,7 +241,7 @@ func (h *DedicatedServerHandler) UpdateServer(c *fiber.Ctx) error {
 
 	var envJSON []byte
 	if input.Environment != nil {
-		envJSON, _ = fiber.Marshal(input.Environment)
+		envJSON, _ = json.Marshal(input.Environment)
 	}
 
 	server := &models.Server{
