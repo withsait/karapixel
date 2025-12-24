@@ -100,7 +100,15 @@ func (a *AuthMiddleware) Login(c *fiber.Ctx) error {
 
 	if err := c.BodyParser(&input); err != nil {
 		return c.Status(400).JSON(fiber.Map{
-			"error": "Invalid request body",
+			"error":   "Invalid request body",
+			"details": err.Error(),
+			"body":    string(c.Body()),
+		})
+	}
+
+	if input.Username == "" || input.Password == "" {
+		return c.Status(400).JSON(fiber.Map{
+			"error": "Username and password are required",
 		})
 	}
 

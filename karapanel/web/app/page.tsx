@@ -5,18 +5,26 @@ import { api } from "@/lib/api";
 import { ServerCard } from "@/components/ServerCard";
 import { MetricsPanel } from "@/components/MetricsPanel";
 import { formatUptime } from "@/lib/utils";
-import { Clock, Server, Users } from "lucide-react";
+import { Clock, Server, Users, RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Dashboard() {
-  const { data: serversData, refetch: refetchServers } = useQuery({
+  const { data: serversData, refetch: refetchServers, isRefetching: isRefetchingServers } = useQuery({
     queryKey: ["servers"],
     queryFn: () => api.getServers(),
+    refetchInterval: 10000, // Auto refresh every 10 seconds
   });
 
-  const { data: metrics } = useQuery({
+  const { data: metrics, refetch: refetchMetrics, isRefetching: isRefetchingMetrics } = useQuery({
     queryKey: ["metrics"],
     queryFn: () => api.getMetrics(),
+    refetchInterval: 5000, // Auto refresh every 5 seconds
   });
+
+  const handleRefresh = () => {
+    refetchServers();
+    refetchMetrics();
+  };
 
   const servers = serversData?.servers || [];
   const onlineCount = servers.filter((s) => s.status === "online").length;
@@ -25,16 +33,27 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Page Title */}
-      <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">KaraPixel Sunucu Kontrol Paneli</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-muted-foreground">KaraPixel Sunucu Kontrol Paneli</p>
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRefresh}
+          disabled={isRefetchingServers || isRefetchingMetrics}
+        >
+          <RefreshCw className={`h-4 w-4 mr-2 ${(isRefetchingServers || isRefetchingMetrics) ? 'animate-spin' : ''}`} />
+          Refresh
+        </Button>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-          <div className="p-3 rounded-full bg-green-500/20">
-            <Server className="h-6 w-6 text-green-500" />
+        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card hover:border-primary/50 transition-colors">
+          <div className="p-3 rounded-full bg-emerald-500/20">
+            <Server className="h-6 w-6 text-emerald-500" />
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Online Servers</p>
@@ -42,9 +61,9 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-          <div className="p-3 rounded-full bg-blue-500/20">
-            <Users className="h-6 w-6 text-blue-500" />
+        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card hover:border-primary/50 transition-colors">
+          <div className="p-3 rounded-full bg-primary/20">
+            <Users className="h-6 w-6 text-primary" />
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Total Players</p>
@@ -52,9 +71,9 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card">
-          <div className="p-3 rounded-full bg-purple-500/20">
-            <Clock className="h-6 w-6 text-purple-500" />
+        <div className="flex items-center gap-4 p-4 rounded-lg border bg-card hover:border-primary/50 transition-colors">
+          <div className="p-3 rounded-full bg-accent/20">
+            <Clock className="h-6 w-6 text-accent" />
           </div>
           <div>
             <p className="text-sm text-muted-foreground">System Uptime</p>

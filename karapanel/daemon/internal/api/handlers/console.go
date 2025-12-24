@@ -2,12 +2,20 @@ package handlers
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
+	"os/exec"
 
 	"github.com/gofiber/contrib/websocket"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"github.com/withsait/karapixel/karapanel/internal/server"
 )
+
+type ConsoleMessage struct {
+	Type string `json:"type"`
+	Data string `json:"data"`
+}
 
 type ConsoleHandler struct {
 	manager        *server.Manager
@@ -87,8 +95,30 @@ func (h *ConsoleHandler) StreamLogs(c *websocket.Conn) {
 					cancel()
 					return
 				}
-				// Handle command input if needed
-				_ = msg // TODO: Send to RCON or screen session
+
+				// Parse message
+				var consoleMsg ConsoleMessage
+				if err := json.Unmarshal(msg, &consoleMsg); err != nil {
+					continue
+				}
+
+				// Handle command
+				if consoleMsg.Type == "command" && consoleMsg.Data != "" {
+					// Send command via screen session
+					screenName := fmt.Sprintf("mc-%s", serverID)
+					cmd := exec.Command("screen", "-S", screenName, "-X", "stuff", consoleMsg.Data+"\n")
+					if err := cmd.Run(); err != nil {
+						c.WriteJSON(fiber.Map{
+							"type": "log",
+							"data": fmt.Sprintf("\x1b[31m[Failed to send command: %s]\x1b[0m", err.Error()),
+						})
+					} else {
+						c.WriteJSON(fiber.Map{
+							"type": "log",
+							"data": fmt.Sprintf("\x1b[35m> %s\x1b[0m", consoleMsg.Data),
+						})
+					}
+				}
 			}
 		}
 	}()
