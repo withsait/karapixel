@@ -26,9 +26,8 @@ class ApiClient {
   }
 
   private async request<T>(path: string, options: RequestInit = {}): Promise<T> {
-    const headers: HeadersInit = {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      ...options.headers,
     };
 
     const token = this.getToken();
@@ -38,7 +37,10 @@ class ApiClient {
 
     const response = await fetch(`${API_URL}${path}`, {
       ...options,
-      headers,
+      headers: {
+        ...headers,
+        ...(options.headers as Record<string, string>),
+      },
     });
 
     if (response.status === 401) {
