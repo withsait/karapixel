@@ -22,8 +22,7 @@ export function Console({ serverId }: ConsoleProps) {
       const { Terminal } = await import("xterm");
       const { FitAddon } = await import("xterm-addon-fit");
       const { WebLinksAddon } = await import("xterm-addon-web-links");
-
-      // Import CSS
+      // @ts-ignore - CSS import
       await import("xterm/css/xterm.css");
 
       if (!terminalRef.current) return;
